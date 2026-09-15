@@ -5,9 +5,9 @@ export const STORE_CONFIG = {
   shortName: 'US',
   tagline: 'Artisanal Woodfire Pizzas • Handcrafted Fresh',
   freeDeliveryText: 'Free Home Delivery Across Town',
-  phone1: '9056251220',
+  phone1: '7300760917',
   phone2: '9056351220',
-  whatsappNumber: '919056251220',
+  whatsappNumber: '917300760917',
   currencySymbol: '₹',
   address: 'Shop No. 12, Main Market, Urban Slice Kitchen',
 };
