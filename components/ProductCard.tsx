@@ -35,21 +35,18 @@ export function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <article className="group flex flex-col justify-between rounded-2xl border border-[#e5ede2] bg-white p-3 sm:p-3.5 shadow-xs transition-all hover:shadow-md hover:border-[#c5dcc0]">
+    <article className="group flex flex-col justify-between rounded-2xl border border-[#e5ede2] bg-white p-2.5 sm:p-3.5 shadow-xs transition-all hover:shadow-md hover:border-[#c5dcc0] overflow-hidden">
       <div>
-        {/* Header: Item Name and Category Section */}
-        <div className="flex items-start justify-between gap-1">
-          <h3 className="text-[14px] sm:text-[15px] font-bold text-[#17251c] leading-snug">
+        {/* Header: Item Name */}
+        <div className="min-w-0">
+          <h3 className="text-[13px] sm:text-[15px] font-bold text-[#17251c] leading-snug break-words">
             {product.name}
           </h3>
-          <span className="shrink-0 rounded-md bg-[#eef7eb] px-1.5 py-0.5 text-[10px] font-bold text-[#0c6e37]">
-            {product.section}
-          </span>
         </div>
 
         {/* Product Description */}
         {product.desc && (
-          <p className="mt-1 text-xs text-[#68716b] line-clamp-2 leading-relaxed">
+          <p className="mt-1 text-[11px] sm:text-xs text-[#68716b] line-clamp-2 leading-relaxed break-words">
             {product.desc}
           </p>
         )}
@@ -57,7 +54,7 @@ export function ProductCard({ product }: ProductCardProps) {
         {/* Multi-size representation: Interactive Pill Buttons */}
         {hasSizes && product.sizes && (
           <div className="mt-2.5">
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-1 sm:gap-1.5">
               {sizeKeys.map((size) => {
                 const isSelected = selectedSize === size;
                 const price = product.sizes![size];
@@ -69,17 +66,17 @@ export function ProductCard({ product }: ProductCardProps) {
                     key={size}
                     type="button"
                     onClick={() => setSelectedSize(size)}
-                    className={`flex-1 py-1 px-1 rounded-xl border text-center transition-all cursor-pointer ${
+                    className={`flex-1 min-w-0 py-1 px-0.5 sm:px-1 rounded-xl border text-center transition-all cursor-pointer ${
                       isSelected
                         ? 'bg-[#16813f] text-white border-[#16813f] shadow-xs scale-[1.02]'
                         : 'bg-[#f6faf4] text-[#2c3e32] border-[#d8e3d5] hover:bg-[#ebf5e7]'
                     }`}
                   >
-                    <span className="block text-[11px] font-bold leading-tight">
+                    <span className="block text-[11px] font-bold leading-tight truncate">
                       {shortName}
                     </span>
                     <span
-                      className={`block text-[10px] font-semibold leading-tight ${
+                      className={`block text-[10px] font-semibold leading-tight truncate ${
                         isSelected ? 'text-lime-200' : 'text-[#5b7364]'
                       }`}
                     >
@@ -97,17 +94,16 @@ export function ProductCard({ product }: ProductCardProps) {
       <div className="mt-3 pt-2 border-t border-[#f2f6f1]">
         {/* Price & Size info */}
         <div className="flex items-baseline justify-between mb-2">
-          <div className="flex items-baseline gap-1">
+          <div className="flex items-baseline gap-1 min-w-0">
             <span className="text-base sm:text-lg font-black text-[#0b7139]">
               {formatCurrency(currentPrice)}
             </span>
             {hasSizes && (
-              <span className="text-[11px] font-semibold text-[#687a6c]">
+              <span className="text-[11px] font-semibold text-[#687a6c] truncate">
                 • {selectedSize}
               </span>
             )}
           </div>
-          
         </div>
 
         {/* Action Button: Full width inside card to ensure it NEVER overflows or collides */}
@@ -116,19 +112,19 @@ export function ProductCard({ product }: ProductCardProps) {
             <button
               type="button"
               onClick={() => changeQty(cartKey, -1)}
-              className="flex h-7 w-8 items-center justify-center rounded-lg bg-black/15 hover:bg-black/25 active:scale-90 transition-all cursor-pointer font-bold"
+              className="flex h-7 w-7 sm:w-8 shrink-0 items-center justify-center rounded-lg bg-black/15 hover:bg-black/25 active:scale-90 transition-all cursor-pointer font-bold"
               aria-label="Decrease quantity"
             >
               <Minus className="h-3.5 w-3.5 text-white" />
             </button>
-            <div className="flex items-center gap-1 px-2 text-xs font-black text-lime-200">
-              <Check className="h-3.5 w-3.5 text-lime-300" />
-              <span>Added{quantity > 1 ? ` (${quantity})` : ''}</span>
+            <div className="flex items-center justify-center gap-1 px-1 text-[11px] sm:text-xs font-black text-lime-200 min-w-0 truncate">
+              <Check className="h-3.5 w-3.5 shrink-0 text-lime-300" />
+              <span className="truncate">Added{quantity > 1 ? ` (${quantity})` : ''}</span>
             </div>
             <button
               type="button"
               onClick={() => changeQty(cartKey, 1)}
-              className="flex h-7 w-8 items-center justify-center rounded-lg bg-black/15 hover:bg-black/25 active:scale-90 transition-all cursor-pointer font-bold"
+              className="flex h-7 w-7 sm:w-8 shrink-0 items-center justify-center rounded-lg bg-black/15 hover:bg-black/25 active:scale-90 transition-all cursor-pointer font-bold"
               aria-label="Increase quantity"
             >
               <Plus className="h-3.5 w-3.5 text-white" />
