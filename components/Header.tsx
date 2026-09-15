@@ -1,8 +1,7 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
-import { Search, ShoppingCart, X, UtensilsCrossed } from 'lucide-react';
+import { Search, ShoppingCart, X } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { STORE_CONFIG } from '../lib/constants';
 
@@ -38,15 +37,6 @@ export function Header({ searchQuery, onSearchChange }: HeaderProps) {
           </div>
 
           <div className="flex items-center gap-2">
-            <Link
-              href="/admin"
-              className="flex items-center gap-1.5 rounded-xl bg-white/15 px-2.5 py-2 text-xs font-semibold text-emerald-50 backdrop-blur-sm transition-all hover:bg-white/25"
-              title="Kitchen & Live Orders View"
-            >
-              <UtensilsCrossed className="h-3.5 w-3.5" />
-              <span className="hidden min-[400px]:inline">Orders</span>
-            </Link>
-
             <button
               onClick={openCart}
               id="header-cart-btn"
